@@ -7,7 +7,7 @@ namespace nim
 {
     class Program
     {
-        static void PrintArray(string [][] arr)
+        static void PrintArray(char[][] arr)
         {
             for (int i = 0; i < arr.Length; i++)
             {
@@ -16,16 +16,16 @@ namespace nim
                 Console.WriteLine();
             }
         }
-        static int Turn(ref string [][] elems, string player, ref int counter)
+        static int Turn(ref char[][] elems, string player, ref int counter)
         {
             Console.WriteLine($"Ходит {player} игрок!");
             Console.Write("Введите номер строки и количество спичек, которые хотите убрать справа, через пробел: ");
             int[] choice = Console.ReadLine().Split().Select(int.Parse).ToArray();
             int raw = choice[0];
             int count = choice[1];
-            elems[raw - 1] = new string[elems[raw - 1].Length - choice[1]];
+            elems[raw - 1] = new char[elems[raw - 1].Length - choice[1]];
             for (int i = 0; i < elems[raw - 1].Length; i++)
-                elems[raw - 1][i] = "|";
+                elems[raw - 1][i] = '|';
             PrintArray(elems);
             if (elems[raw - 1].Length == 0)
                 counter++;
@@ -36,14 +36,14 @@ namespace nim
             int emptyRawsCounter = 0;
             int playerCheck = 2;
             string[] players = { "первый", "второй" };
-            string[][] elems = new string[4][];
+            char[][] elems = new char[4][];
             for (int i = 0, j = 1; i < elems.Length && j <= 7; i++, j+=2)
-                elems[i] = new string[j];
+                elems[i] = new char[j];
 
             for (int i = 0; i < elems.Length; i++)
             {
                 for (int j = 0; j < elems[i].Length; j++)
-                    elems[i][j] = "|";
+                    elems[i][j] = '|';
             }
             
             string playerNumber = string.Empty;
